@@ -40,8 +40,6 @@
   .sync-dot.live{background:#4caf50;animation:pulse 2s infinite;}.sync-dot.syncing{background:#f0a030;}.sync-dot.error{background:var(--delete-red);}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
   .sync-label{font-size:11px;color:var(--ink-light);font-weight:600;letter-spacing:0.05em;}
-  .lock-icon-btn{background:none;border:1.5px solid var(--border);border-radius:20px;padding:4px 10px;font-size:13px;cursor:pointer;color:var(--ink-mid);display:none;align-items:center;gap:5px;font-family:'Nunito',sans-serif;font-weight:600;-webkit-appearance:none;}
-  .lock-icon-btn.visible{display:flex;}
   .settings-btn{background:none;border:none;font-size:16px;cursor:pointer;color:var(--ink-light);padding:4px;}
   .print-btn{background:none;border:1.5px solid var(--border);border-radius:8px;padding:3px 10px;font-size:11px;font-weight:700;letter-spacing:0.04em;cursor:pointer;color:var(--ink-mid);font-family:'Nunito',sans-serif;-webkit-appearance:none;line-height:1.6;}
   .font-btn{background:none;border:1.5px solid var(--border);border-radius:8px;padding:3px 8px;font-size:13px;cursor:pointer;color:var(--ink-mid);font-family:'Nunito',sans-serif;font-weight:700;-webkit-appearance:none;line-height:1.2;}
@@ -66,8 +64,6 @@
   .day-group-header{font-family:'Lora',serif;font-size:26px;font-weight:700;color:var(--matthew);margin:22px 0 10px;padding-top:12px;border-top:2px solid var(--matthew);display:block;}
   .day-group-header.today-hdr{color:#b8860b;border-color:#b8860b;background:var(--today-bg);padding:8px 12px;border-radius:10px;border-top:none;margin-top:16px;}
   .msg-date-line{font-family:'Nunito',sans-serif;font-size:19px;font-weight:700;color:var(--ink-mid);margin-bottom:8px;}
-  .readonly-banner{background:#f0ece4;border-bottom:1px solid var(--border);padding:8px 18px;text-align:center;font-size:12px;color:var(--ink-light);font-style:italic;display:none;}
-  .readonly-banner.visible{display:block;}
   #error-banner{display:none;background:#fff0f0;border:1px solid #f5c6c6;border-radius:10px;padding:10px 14px;margin:12px 14px;font-size:13px;color:var(--delete-red);max-width:680px;}
   .msg-wrap{position:relative;margin-bottom:12px;border-radius:14px;overflow:hidden;animation:slideIn 0.3s ease;}
   .msg-delete-bg{position:absolute;inset:0;background:var(--delete-red);border-radius:14px;display:flex;align-items:center;justify-content:flex-end;padding-right:22px;color:white;font-size:12px;font-weight:700;letter-spacing:0.07em;opacity:0;}
@@ -341,7 +337,6 @@
         <hr class="modal-divider">
         <div class="modal-secondary">Device options</div>
         <div class="modal-action-row">
-          <button class="modal-action-btn" onclick="modalLockAsDerek()">&#128274; Lock as Derek</button>
           <button class="modal-action-btn danger" onclick="modalClearPrefs()">&#9881; Clear prefs</button>
         </div>
       </div>
@@ -357,8 +352,7 @@
           <button class="font-btn" onclick="adjustFont(-1)">A&#8722;</button>
           <button class="font-btn" onclick="adjustFont(1)">A+</button>
         </div>
-        <button class="lock-icon-btn" id="lock-icon-btn" onclick="openModal('unlock')">&#128274; <span style="font-size:11px">PIN</span></button>
-        <button class="settings-btn" id="settings-btn" onclick="openModal('settings')">&#9881;&#65039;</button>
+          <button class="settings-btn" id="settings-btn" onclick="openModal('settings')">&#9881;&#65039;</button>
         <button class="settings-btn" id="admin-btn" onclick="showAdminPanel()" title="Admin Panel">⚙️</button>
       </div>
       <button class="collapse-btn" id="header-collapse-btn" onclick="toggleHeaderCollapse()" title="Collapse header">&#9650;</button>
@@ -384,7 +378,6 @@
     </div>
     </div>
   </div>
-  <div class="readonly-banner" id="readonly-banner">Viewing as Derek &mdash; read only</div>
   <div id="error-banner"></div>
   <div id="tab-notes-content" style="width:100%;"><div id="messages-area" class="with-compose"></div></div>
   <div id="tab-deleted-content">
@@ -1030,14 +1023,9 @@ function handleModalConfirm(){
     el('modal-extra').style.display='block';
   }
 }
-function modalLockAsDerek(){
-  ss('fn_derek_locked','1'); isReadOnly=true; closeModal();
-  el('modal-confirm-btn').style.display=''; el('modal-pin').style.display='';
-  applyMode(); renderMsgs();
-}
 function modalClearPrefs(){
   if(!confirm('Clear saved preferences on this device?')) return;
-  sr('fn_user'); sr('fn_derek_locked'); closeModal(); location.reload();
+  sr('fn_user'); closeModal(); location.reload();
 }
 el('modal-pin').addEventListener('keydown',function(e){if(e.key==='Enter')handleModalConfirm();});
 
