@@ -207,19 +207,29 @@
       </div>
       <div id="setup-step-1" class="setup-step active">
         <h2>🚀 Set Up Your App</h2>
-        <p>First, let's connect to your Firebase database. You'll need your Firebase credentials.</p>
-        <label>API Key</label>
-        <input type="text" id="setup-api-key" placeholder="AIzaSy...">
-        <label>Auth Domain</label>
-        <input type="text" id="setup-auth-domain" placeholder="your-app.firebaseapp.com">
-        <label>Database URL</label>
-        <input type="text" id="setup-db-url" placeholder="https://your-app-rtdb.firebaseio.com">
-        <label>Project ID</label>
-        <input type="text" id="setup-project-id" placeholder="your-project-id">
+        <p>Let's connect to your Firebase database.</p>
+
+        <div style="background:#f9f9f9;padding:16px;border-radius:8px;margin-bottom:20px;border-left:4px solid #3a6b52;">
+          <p style="margin:0 0 12px;font-weight:600;color:#333;">Already have a Firebase project?</p>
+          <p style="margin:0 0 14px;font-size:13px;color:#666;">Enter your Firebase credentials below. All four fields are required.</p>
+          <label>API Key</label>
+          <input type="text" id="setup-api-key" placeholder="AIzaSy...">
+          <label>Auth Domain</label>
+          <input type="text" id="setup-auth-domain" placeholder="your-app.firebaseapp.com">
+          <label>Database URL</label>
+          <input type="text" id="setup-db-url" placeholder="https://your-app-rtdb.firebaseio.com">
+          <label>Project ID</label>
+          <input type="text" id="setup-project-id" placeholder="your-project-id">
+        </div>
+
+        <div style="text-align:center;color:#999;font-size:13px;margin-bottom:16px;">— or —</div>
+
+        <p style="font-size:14px;color:#666;margin-bottom:16px;">Don't have Firebase yet? <strong>Leave the fields above blank</strong> and we'll guide you through creating a new project (takes 5 minutes).</p>
+
         <div class="setup-wizard-error" id="setup-step1-error"></div>
         <div class="setup-wizard-buttons">
           <button class="setup-wizard-btn secondary" onclick="closeSetupWizard()">Cancel</button>
-          <button class="setup-wizard-btn primary" onclick="setupStep1Next()">Test & Continue →</button>
+          <button class="setup-wizard-btn primary" onclick="setupStep1Next()">Continue →</button>
         </div>
       </div>
       <div id="setup-step-2" class="setup-step">
@@ -486,15 +496,74 @@ function setupShowStep(n){
   el('setup-progress-fill').style.width=(n/3*100)+'%';
 }
 function setupStepBack(from){setupShowStep(from-1);}
+function showFirebaseCreationGuide(){
+  var guide='<div style="max-height:70vh;overflow-y:auto;padding:0;">' +
+    '<div style="padding:24px;background:#f5f5f5;border-bottom:1px solid #ddd;">' +
+      '<h3 style="margin:0 0 12px;color:#333;">How to Create a Firebase Project</h3>' +
+      '<p style="margin:0;color:#666;font-size:13px;">Follow these steps (takes 5 minutes):</p>' +
+    '</div>' +
+    '<div style="padding:24px;">' +
+      '<div style="margin-bottom:20px;">' +
+        '<strong style="color:#333;">1. Go to Firebase Console</strong>' +
+        '<p style="margin:8px 0 0;color:#666;font-size:13px;">Visit <code style="background:#f0f0f0;padding:2px 6px;border-radius:4px;">console.firebase.google.com</code><br>Sign in with your Google account</p>' +
+      '</div>' +
+      '<div style="margin-bottom:20px;">' +
+        '<strong style="color:#333;">2. Create New Project</strong>' +
+        '<p style="margin:8px 0 0;color:#666;font-size:13px;">Click "Create a project" and enter a name (e.g., "Family Notepad")</p>' +
+      '</div>' +
+      '<div style="margin-bottom:20px;">' +
+        '<strong style="color:#333;">3. Create Realtime Database</strong>' +
+        '<p style="margin:8px 0 0;color:#666;font-size:13px;">In Firebase console, go to <strong>Build → Realtime Database</strong><br>Click "Create Database" and select "Test Mode"</p>' +
+      '</div>' +
+      '<div style="margin-bottom:20px;">' +
+        '<strong style="color:#333;">4. Get Your Credentials</strong>' +
+        '<p style="margin:8px 0 0;color:#666;font-size:13px;">In Firebase console, click the settings icon ⚙️<br>Go to "Project settings" → "General" tab<br>Copy all four values below:</p>' +
+        '<ul style="margin:8px 0;padding-left:20px;color:#666;font-size:13px;">' +
+          '<li><strong>API Key</strong></li>' +
+          '<li><strong>Auth Domain</strong></li>' +
+          '<li><strong>Project ID</strong></li>' +
+          '<li><strong>Database URL</strong> (in Realtime Database section)</li>' +
+        '</ul>' +
+      '</div>' +
+      '<div style="margin-bottom:20px;">' +
+        '<strong style="color:#333;">5. Come Back Here</strong>' +
+        '<p style="margin:8px 0 0;color:#666;font-size:13px;">Paste the four values above and click "Test & Continue"</p>' +
+      '</div>' +
+    '</div>' +
+  '</div>';
+
+  var modal='<div style="position:fixed;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;z-index:400;padding:20px;" onclick="if(event.target===this)document.getElementById(\'firebase-guide-modal\').remove();">' +
+    '<div style="background:white;border-radius:14px;width:100%;max-width:500px;box-shadow:0 20px 60px rgba(0,0,0,0.2);">'+guide+'<div style="padding:16px 24px;border-top:1px solid #ddd;display:flex;gap:10px;">' +
+      '<button class="setup-wizard-btn secondary" style="flex:1;" onclick="document.getElementById(\'firebase-guide-modal\').remove()">Got It</button>' +
+      '<button class="setup-wizard-btn primary" style="flex:1;" onclick="window.open(\'https://console.firebase.google.com\',\'_blank\');return false;">Open Firebase →</button>' +
+    '</div>' +
+  '</div></div>';
+
+  var div=document.createElement('div');
+  div.id='firebase-guide-modal';
+  div.innerHTML=modal;
+  document.body.appendChild(div);
+}
+
 function setupStep1Next(){
   var apiKey=el('setup-api-key').value.trim();
   var authDomain=el('setup-auth-domain').value.trim();
   var dbUrl=el('setup-db-url').value.trim();
   var projectId=el('setup-project-id').value.trim();
-  if(!apiKey||!authDomain||!dbUrl||!projectId){
-    el('setup-step1-error').textContent='All fields are required.';
+  var hasCredentials=apiKey&&authDomain&&dbUrl&&projectId;
+  var anyFieldFilled=apiKey||authDomain||dbUrl||projectId;
+
+  if(anyFieldFilled&&!hasCredentials){
+    el('setup-step1-error').textContent='All four Firebase fields are required. Leave all blank to create a new project.';
     return;
   }
+
+  if(!hasCredentials){
+    el('setup-step1-error').textContent='';
+    showFirebaseCreationGuide();
+    return;
+  }
+
   el('setup-step1-error').textContent='Testing connection...';
   var fbConfig={apiKey:apiKey,authDomain:authDomain,databaseURL:dbUrl,projectId:projectId};
   try{
