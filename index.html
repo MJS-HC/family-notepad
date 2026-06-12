@@ -363,13 +363,7 @@
     <div class="collapsible-section" id="header-collapsible" style="max-height:none;">
     <div class="user-row">
       <span class="user-label">I am:</span>
-      <button class="user-pill" id="pill-matthew"   onclick="setUser('matthew')">Matthew</button>
-      <button class="user-pill" id="pill-rebecca"   onclick="setUser('rebecca')">Rebecca</button>
-      <button class="user-pill" id="pill-derek"     onclick="setUser('derek')">Derek</button>
-      <button class="user-pill" id="pill-katharine" onclick="setUser('katharine')">Katharine</button>
-      <button class="user-pill" id="pill-jemima"    onclick="setUser('jemima')">Jemima</button>
-      <button class="user-pill" id="pill-harry"     onclick="setUser('harry')">Harry</button>
-      <button class="user-pill" id="pill-oscar"     onclick="setUser('oscar')">Oscar</button>
+      <div id="user-pills-container"></div>
     </div>
     <div class="tabs">
       <button class="tab-btn active" id="tab-notes-btn"   onclick="setTab('notes')">Messages</button>
@@ -904,21 +898,18 @@ function adminFactoryReset(){
   if(!confirm('Are you absolutely sure? This cannot be undone.'))return;
   sr(CONFIG_KEY);
   sr('fn_user');
-  sr('fn_derek_locked');
   sr('fn_font_main');
   alert('Factory reset complete. Reloading...');
   location.reload();
 }
 function renderUserPills(){
-  var userRow=el('header-collapsible');
-  if(!userRow)return;
-  var pills='<span class="user-label">I am:</span>';
+  var pills='';
   USERS.forEach(function(u){
     pills+='<button class="user-pill" id="pill-'+sf(u)+'" onclick="setUser(\''+u+'\')">'+cap(u)+'</button>';
   });
-  var userDiv=document.querySelector('.user-row');
-  if(userDiv){
-    userDiv.innerHTML=pills;
+  var container=el('user-pills-container');
+  if(container){
+    container.innerHTML=pills;
     if(currentUser&&USERS.indexOf(currentUser)<0)currentUser=USERS[0]||'';
     setUser(currentUser);
   }
