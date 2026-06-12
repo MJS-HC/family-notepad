@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Diary - Installation</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .container {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      max-width: 600px;
+      width: 100%;
+    }
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 40px 30px;
+      text-align: center;
+      border-radius: 16px 16px 0 0;
+    }
+    .header h1 {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+    .header p {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+    .content {
+      padding: 40px 30px;
+    }
+    .section {
+      margin-bottom: 32px;
+    }
+    .step {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .step-number {
+      min-width: 40px;
+      width: 40px;
+      height: 40px;
+      background: #667eea;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+    .step-content {
+      flex: 1;
+    }
+    .step-content h3 {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 4px;
+    }
+    .step-content p {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.5;
+    }
+    .button {
+      display: inline-block;
+      background: #667eea;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.2s;
+      margin-top: 12px;
+    }
+    .button:hover {
+      background: #764ba2;
+    }
+    .button-secondary {
+      background: #f0f0f0;
+      color: #333;
+      margin-left: 12px;
+    }
+    .button-secondary:hover {
+      background: #e0e0e0;
+    }
+    .info-box {
+      background: #f0f4ff;
+      border-left: 4px solid #667eea;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 14px;
+      color: #333;
+    }
+    .divider {
+      height: 1px;
+      background: #eee;
+      margin: 32px 0;
+    }
+    .faq {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid #eee;
+    }
+    .faq h3 {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 16px;
+    }
+    .faq-item {
+      margin-bottom: 16px;
+    }
+    .faq-item h4 {
+      font-size: 14px;
+      color: #667eea;
+      margin-bottom: 4px;
+      cursor: pointer;
+    }
+    .faq-item p {
+      font-size: 13px;
+      color: #666;
+      display: none;
+      line-height: 1.5;
+    }
+    .faq-item.open p {
+      display: block;
+    }
+    .feature-list {
+      list-style: none;
+      margin: 16px 0;
+    }
+    .feature-list li {
+      padding: 8px 0;
+      font-size: 14px;
+      color: #666;
+    }
+    .feature-list li:before {
+      content: "✓ ";
+      color: #667eea;
+      font-weight: bold;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📔 Family Diary</h1>
+      <p>Free, shared family notepad. Deploy in 5 minutes.</p>
+    </div>
+
+    <div class="content">
+      <div class="info-box">
+        <strong>What is Family Diary?</strong><br>
+        A simple, free app where your family can share notes, messages, and reminders. Everyone gets their own color. No ads, no tracking, no cost.
+      </div>
+
+      <div class="section">
+        <h2 style="font-size: 20px; color: #333; margin-bottom: 20px;">Getting Started (5 minutes)</h2>
+
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Download the app</h3>
+            <p>You only need ONE file: <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 4px;">index.html</code></p>
+            <button class="button" onclick="downloadFile()">⬇️ Download index.html</button>
+            <button class="button button-secondary" onclick="window.open('https://github.com/MJS-HC/family-notepad', '_blank')">View on GitHub</button>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Sign up for Netlify (free)</h3>
+            <p>Create a free account to host your app on the web. Email or Google sign-in.</p>
+            <button class="button" onclick="window.open('https://app.netlify.com/signup', '_blank')">📱 Go to Netlify.com</button>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Deploy to Netlify</h3>
+            <p>Drag the <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 4px;">index.html</code> file you downloaded onto Netlify.</p>
+            <button class="button" onclick="window.open('https://app.netlify.com/drop', '_blank')">📤 Go to Netlify Deploy</button>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>Create your Firebase project (5 min)</h3>
+            <p>When your app loads, the setup wizard will guide you through creating a free Firebase project. Just follow the steps.</p>
+            <button class="button" onclick="window.open('https://console.firebase.google.com', '_blank')">🔥 Firebase Console</button>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h3>Share with your family</h3>
+            <p>Netlify gives you a URL. Share it with family members. They open the link and start using it immediately.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="faq">
+        <h3>Questions?</h3>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <h4>❓ Do I need a GitHub account?</h4>
+          <p>No. You only need Netlify (free) and Firebase (free). GitHub is just where the code lives.</p>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <h4>❓ Does it cost anything?</h4>
+          <p>No. Netlify and Firebase both have generous free plans that cover family use. No credit card required.</p>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <h4>❓ Is my data private?</h4>
+          <p>Yes. Your family gets its own Firebase project. Only people with your app's URL can see the messages. You control the data.</p>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <h4>❓ Can I customize it?</h4>
+          <p>Yes. The code is open-source. You can modify colors, text, features — whatever you want.</p>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <h4>❓ I got stuck. Where's help?</h4>
+          <p>The setup wizard walks you through everything. If you're stuck, the detailed <a href="https://github.com/MJS-HC/family-notepad/blob/main/DEPLOYMENT.md" target="_blank" style="color: #667eea;">Deployment Guide</a> has screenshots and troubleshooting.</p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div style="text-align: center; padding: 20px 0; color: #666; font-size: 13px;">
+        <p>Made with ❤️ by <a href="https://github.com/MJS-HC" target="_blank" style="color: #667eea; text-decoration: none;">Matthew Swindells</a></p>
+        <p style="margin-top: 8px;">
+          <a href="https://github.com/MJS-HC/family-notepad/blob/main/LICENSE.md" target="_blank" style="color: #667eea; text-decoration: none;">License</a> •
+          <a href="https://github.com/MJS-HC/family-notepad" target="_blank" style="color: #667eea; text-decoration: none;">Source Code</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function downloadFile() {
+      // In a real scenario, this would download from the repo
+      // For now, direct them to GitHub where they can download
+      window.open('https://github.com/MJS-HC/family-notepad/blob/main/index.html', '_blank');
+      setTimeout(() => {
+        alert('Right-click on "Raw" button and select "Save as" to download the file.');
+      }, 500);
+    }
+
+    function toggleFaq(element) {
+      element.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
