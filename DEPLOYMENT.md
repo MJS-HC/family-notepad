@@ -36,16 +36,24 @@ This is the **Multi-Family Deployable Edition** of Family Diary. Each family can
 
 ### 1.4 Get Your Credentials
 
-1. Click the **Settings icon** (gear) in the top left
-2. Select **"Project settings"**
-3. Go to the **"General"** tab
-4. Scroll down to find your Firebase config:
-   - **API Key**
-   - **Auth Domain**
-   - **Project ID**
-5. In the **"Realtime Database"** section, copy your **Database URL**
+You need **4 credentials** from Firebase. They're in different places:
 
-Keep this information nearby - you'll need it in Step 3.
+**For API Key, Auth Domain, and Project ID:**
+1. In Firebase Console, click the **Settings gear icon** (top left)
+2. Click **"Project settings"**
+3. Go to the **"General"** tab
+4. Scroll down to **"Your apps"** section
+5. Click the **Web icon** (`</>`) to create a web app (if not already created)
+6. Copy the values:
+   - **API Key** (starts with `AIza...`)
+   - **Auth Domain** (looks like `your-project.firebaseapp.com`)
+   - **Project ID** (shown on this page)
+
+**For Database URL:**
+1. Go to **Build** → **Realtime Database** (left sidebar)
+2. Copy the URL at the top (looks like `https://your-project-rtdb.firebaseio.com`)
+
+Keep all 4 values nearby - you'll need them in Step 3.
 
 ### 1.5 Secure Your Database (Optional but Recommended)
 
