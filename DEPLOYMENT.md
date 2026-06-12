@@ -282,33 +282,66 @@ This is version 2.0 of Derek's Family Notepad. If you have suggestions or find i
 
 ### Important Legal Notice
 
-**Derek's Family Notepad** is provided **free of charge** under the following terms:
+**Derek's Family Notepad** is licensed under the **MIT License with Commons Clause**.
 
-#### Your Rights
-- Use this software for personal, family, or internal use freely
-- Modify the code for your own purposes
-- Distribute modified versions (with attribution)
+#### License Summary
+
+- **Base License**: MIT License (permissive open-source license)
+- **Commercial Restriction**: Commons Clause (requires negotiation for commercial use)
+- **Status**: Free for personal/family/non-commercial use
+
+#### Your Rights (Non-Commercial)
+- ✅ Use the software freely
+- ✅ Modify the source code
+- ✅ Distribute your modifications
+- ✅ Run the software on your own servers
 
 #### Your Obligations
-- **Attribution:** You must acknowledge **Matthew Swindells** as the original author
-- **Commercial Use:** If you intend to commercialize this software (sell, charge for access, or generate revenue):
-  - **25% of net revenue** must be paid to Matthew Swindells
-  - Contact: [matthew.j.swindells@gmail.com](mailto:matthew.j.swindells@gmail.com)
+- **Attribution**: You must credit Matthew Swindells as the original author
+- **Include License**: Distribute this license with the software
 
-#### Disclaimer
-- **No Warranty:** Functionality and data persistence are not guaranteed
-- **Use at Own Risk:** The author is not responsible for data loss, security issues, or service interruptions
-- See `LICENSE.md` for complete terms
+#### Commercial Use
+
+If you intend to **commercialize** this software (sell, charge access fees, use in a paid service, or generate revenue), you must:
+
+1. Contact: [matthew.j.swindells@gmail.com](mailto:matthew.j.swindells@gmail.com)
+2. Negotiate a commercial license agreement
+3. Discuss applicable licensing terms
+
+**What counts as commercial use:**
+- Selling access or subscriptions
+- Offering as a SaaS product
+- White-labeling for clients
+- Bundling with paid products
+- Using in a for-profit business
+- Generating ad revenue from it
+
+#### Disclaimer & Limitations
+
+**No Warranty**: This software is provided "AS IS" without any warranty. Specifically:
+- Functionality is not guaranteed
+- Data persistence is not guaranteed
+- Security is not guaranteed
+- The author is not responsible for data loss or service interruptions
+
+See `LICENSE.md` for the complete, legally binding license terms.
 
 ### Attribution Example
 
-When distributing or deploying this software, include:
+When using or distributing this software, include:
 
 ```
-Based on Derek's Family Notepad
-Original author: Matthew Swindells
+Derek's Family Notepad
+Copyright (c) 2026 Matthew Swindells
+Licensed under MIT License with Commons Clause
 https://github.com/[your-repo]
 ```
+
+### Legal Resources
+
+- **Full License**: See `LICENSE.md` in the project
+- **Commons Clause**: [commonclause.com](https://commonclause.com)
+- **MIT License**: [opensource.org/licenses/MIT](https://opensource.org/licenses/MIT)
 
 ---
 

@@ -525,21 +525,36 @@ function setupShowStep(n){
 function setupStepBack(from){setupShowStep(from-1);}
 function showLicenseModal(){
   var content='<div style="max-height:70vh;overflow-y:auto;padding:24px;">' +
-    '<h3 style="margin:0 0 14px;color:#333;">License & Terms</h3>' +
+    '<h3 style="margin:0 0 14px;color:#333;">MIT License with Commons Clause</h3>' +
     '<div style="font-size:13px;color:#555;line-height:1.6;">' +
-      '<p><strong>Free of Charge:</strong> This app is made available free of charge.</p>' +
-      '<p><strong>No Guarantee:</strong> Functionality, reliability, and data persistence are not guaranteed.</p>' +
-      '<p><strong>Open Source:</strong> You may use and modify the code freely. Must acknowledge Matthew Swindells as the original author.</p>' +
-      '<p><strong>Commercial Use:</strong> If you commercialize this software (sell, charge for access, or generate revenue), 25% of net revenue must be paid to the original author, Matthew Swindells.</p>' +
-      '<p><strong>Use at Your Own Risk:</strong> The author is not responsible for data loss, security issues, or service interruptions.</p>' +
-      '<p style="margin-top:16px;padding-top:16px;border-top:1px solid #ddd;"><strong>Contact for Commercial Use:</strong><br>' +
-      '<a href="mailto:matthew.j.swindells@gmail.com" style="color:#3a6b52;text-decoration:none;">matthew.j.swindells@gmail.com</a></p>' +
-      '<p style="font-size:12px;color:#888;margin-top:16px;">For full license details, see LICENSE.md</p>' +
+      '<p><strong>License Type:</strong> MIT License + Commons Clause</p>' +
+
+      '<div style="margin:16px 0;padding:12px;background:#f5f5f5;border-radius:6px;">' +
+        '<p style="margin:0;"><strong>Non-Commercial Use (FREE)</strong></p>' +
+        '<ul style="margin:8px 0;padding-left:20px;color:#555;font-size:12px;">' +
+          '<li>Personal or family use</li>' +
+          '<li>Educational use</li>' +
+          '<li>Non-profit organizations</li>' +
+          '<li>Internal business use</li>' +
+        '</ul>' +
+      '</div>' +
+
+      '<div style="margin:16px 0;padding:12px;background:#fff3cd;border-radius:6px;border-left:4px solid #ff9800;">' +
+        '<p style="margin:0;"><strong>Commercial Use (RESTRICTED)</strong></p>' +
+        '<p style="margin:8px 0;font-size:12px;color:#555;">Contact the original author to negotiate terms:</p>' +
+        '<a href="mailto:matthew.j.swindells@gmail.com" style="color:#ff9800;text-decoration:none;font-size:12px;font-weight:600;">matthew.j.swindells@gmail.com</a>' +
+      '</div>' +
+
+      '<p style="margin:16px 0;"><strong>No Warranty:</strong> The software is provided AS-IS without guarantee of functionality, reliability, or security.</p>' +
+
+      '<p style="margin:16px 0;"><strong>Attribution Required:</strong> Credit Matthew Swindells as the original author in all distributions.</p>' +
+
+      '<p style="font-size:12px;color:#888;margin-top:16px;padding-top:16px;border-top:1px solid #ddd;">For complete license text, see LICENSE.md in the project files.</p>' +
     '</div>' +
   '</div>';
 
   var modal='<div style="position:fixed;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;z-index:400;padding:20px;" onclick="if(event.target===this)document.getElementById(\'license-modal\').remove();">' +
-    '<div style="background:white;border-radius:14px;width:100%;max-width:500px;box-shadow:0 20px 60px rgba(0,0,0,0.2);">'+
+    '<div style="background:white;border-radius:14px;width:100%;max-width:550px;box-shadow:0 20px 60px rgba(0,0,0,0.2);">'+
       '<div style="padding:20px;border-bottom:1px solid #ddd;display:flex;justify-content:space-between;align-items:center;">' +
         '<h2 style="margin:0;font-size:1.3rem;color:#333;">License & Terms</h2>' +
         '<button style="background:none;border:none;font-size:24px;cursor:pointer;color:#999;" onclick="document.getElementById(\'license-modal\').remove()">✕</button>' +
