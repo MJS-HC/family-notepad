@@ -278,4 +278,38 @@ This is version 2.0 of Derek's Family Notepad. If you have suggestions or find i
 
 ---
 
+## License & Attribution
+
+### Important Legal Notice
+
+**Derek's Family Notepad** is provided **free of charge** under the following terms:
+
+#### Your Rights
+- Use this software for personal, family, or internal use freely
+- Modify the code for your own purposes
+- Distribute modified versions (with attribution)
+
+#### Your Obligations
+- **Attribution:** You must acknowledge **Matthew Swindells** as the original author
+- **Commercial Use:** If you intend to commercialize this software (sell, charge for access, or generate revenue):
+  - **25% of net revenue** must be paid to Matthew Swindells
+  - Contact: [matthew.j.swindells@gmail.com](mailto:matthew.j.swindells@gmail.com)
+
+#### Disclaimer
+- **No Warranty:** Functionality and data persistence are not guaranteed
+- **Use at Own Risk:** The author is not responsible for data loss, security issues, or service interruptions
+- See `LICENSE.md` for complete terms
+
+### Attribution Example
+
+When distributing or deploying this software, include:
+
+```
+Based on Derek's Family Notepad
+Original author: Matthew Swindells
+https://github.com/[your-repo]
+```
+
+---
+
 **Happy note-taking!** 📝

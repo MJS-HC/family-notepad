@@ -207,6 +207,11 @@
       </div>
       <div id="setup-step-1" class="setup-step active">
         <h2>🚀 Set Up Your App</h2>
+
+        <div style="background:#fff3cd;padding:14px;border-radius:8px;margin-bottom:18px;border-left:4px solid #ff9800;font-size:12px;color:#555;">
+          <strong style="color:#333;">⚖️ Important Notice:</strong> This app is provided free of charge with no guarantee of functionality. See <strong><a href="#" onclick="showLicenseModal();return false;" style="color:#ff9800;text-decoration:underline;">License & Terms</a></strong> for details. If you plan to commercialize this, 25% commission is owed to the original author, Matthew Swindells.
+        </div>
+
         <p>Let's connect to your Firebase database.</p>
 
         <div style="background:#f9f9f9;padding:16px;border-radius:8px;margin-bottom:20px;border-left:4px solid #3a6b52;">
@@ -292,12 +297,31 @@
         <div id="admin-tab-help" class="admin-panel-section">
           <h3>Help & Support</h3>
           <p>This is the Admin Panel. From here you can:</p>
-          <ul style="margin:16px 0;">
+          <ul style="margin:16px 0;font-size:13px;">
             <li><strong>Users:</strong> Add, edit, or delete users</li>
             <li><strong>Settings:</strong> Change admin PIN or reset the app</li>
             <li><strong>Help:</strong> View this information</li>
           </ul>
-          <p style="font-size:13px;color:var(--ink-light);margin-top:20px;">Version 2.0 - Multi-Family Deployable Edition</p>
+
+          <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
+            <h4 style="margin:0 0 10px;font-size:14px;">License & Attribution</h4>
+            <p style="font-size:12px;color:var(--ink-mid);margin:0 0 12px;">
+              <strong>Derek's Family Notepad</strong><br>
+              Original Author: Matthew Swindells
+            </p>
+            <p style="font-size:12px;color:var(--ink-light);margin:0 0 10px;">
+              This app is provided free of charge with no guarantee. You may use and modify the code freely, but must acknowledge the original author.
+            </p>
+            <p style="font-size:12px;color:var(--ink-light);margin:0;">
+              <strong>Commercial Use:</strong> If you plan to commercialize this software, 25% of net revenue must be paid to Matthew Swindells.
+            </p>
+          </div>
+
+          <div style="margin-top:20px;padding:12px;background:var(--bg-light);border-radius:8px;font-size:12px;color:var(--ink-mid);">
+            <strong>📖 Full License:</strong> See LICENSE.md in the project files for complete terms.
+          </div>
+
+          <p style="font-size:12px;color:var(--ink-light);margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">Version 2.0 - Multi-Family Deployable Edition</p>
         </div>
       </div>
     </div>
@@ -337,6 +361,9 @@
         <button class="settings-btn" id="admin-btn" onclick="showAdminPanel()" title="Admin Panel">⚙️</button>
       </div>
       <button class="collapse-btn" id="header-collapse-btn" onclick="toggleHeaderCollapse()" title="Collapse header">&#9650;</button>
+      <div style="position:absolute;right:12px;bottom:8px;font-size:11px;color:var(--ink-light);">
+        <a href="#" onclick="showLicenseModal();return false;" style="color:var(--ink-light);text-decoration:none;">© 2026 Matthew Swindells</a>
+      </div>
     </div>
     <div class="collapsible-section" id="header-collapsible" style="max-height:none;">
     <div class="user-row">
@@ -496,6 +523,39 @@ function setupShowStep(n){
   el('setup-progress-fill').style.width=(n/3*100)+'%';
 }
 function setupStepBack(from){setupShowStep(from-1);}
+function showLicenseModal(){
+  var content='<div style="max-height:70vh;overflow-y:auto;padding:24px;">' +
+    '<h3 style="margin:0 0 14px;color:#333;">License & Terms</h3>' +
+    '<div style="font-size:13px;color:#555;line-height:1.6;">' +
+      '<p><strong>Free of Charge:</strong> This app is made available free of charge.</p>' +
+      '<p><strong>No Guarantee:</strong> Functionality, reliability, and data persistence are not guaranteed.</p>' +
+      '<p><strong>Open Source:</strong> You may use and modify the code freely. Must acknowledge Matthew Swindells as the original author.</p>' +
+      '<p><strong>Commercial Use:</strong> If you commercialize this software (sell, charge for access, or generate revenue), 25% of net revenue must be paid to the original author, Matthew Swindells.</p>' +
+      '<p><strong>Use at Your Own Risk:</strong> The author is not responsible for data loss, security issues, or service interruptions.</p>' +
+      '<p style="margin-top:16px;padding-top:16px;border-top:1px solid #ddd;"><strong>Contact for Commercial Use:</strong><br>' +
+      '<a href="mailto:matthew.j.swindells@gmail.com" style="color:#3a6b52;text-decoration:none;">matthew.j.swindells@gmail.com</a></p>' +
+      '<p style="font-size:12px;color:#888;margin-top:16px;">For full license details, see LICENSE.md</p>' +
+    '</div>' +
+  '</div>';
+
+  var modal='<div style="position:fixed;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;z-index:400;padding:20px;" onclick="if(event.target===this)document.getElementById(\'license-modal\').remove();">' +
+    '<div style="background:white;border-radius:14px;width:100%;max-width:500px;box-shadow:0 20px 60px rgba(0,0,0,0.2);">'+
+      '<div style="padding:20px;border-bottom:1px solid #ddd;display:flex;justify-content:space-between;align-items:center;">' +
+        '<h2 style="margin:0;font-size:1.3rem;color:#333;">License & Terms</h2>' +
+        '<button style="background:none;border:none;font-size:24px;cursor:pointer;color:#999;" onclick="document.getElementById(\'license-modal\').remove()">✕</button>' +
+      '</div>'+
+      content+
+      '<div style="padding:16px 24px;border-top:1px solid #ddd;text-align:right;">' +
+        '<button class="setup-wizard-btn primary" style="width:100%;" onclick="document.getElementById(\'license-modal\').remove()">Got It</button>' +
+      '</div>' +
+    '</div></div>';
+
+  var div=document.createElement('div');
+  div.id='license-modal';
+  div.innerHTML=modal;
+  document.body.appendChild(div);
+}
+
 function showFirebaseCreationGuide(){
   var guide='<div style="max-height:70vh;overflow-y:auto;padding:0;">' +
     '<div style="padding:24px;background:#f5f5f5;border-bottom:1px solid #ddd;">' +
