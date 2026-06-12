@@ -286,6 +286,13 @@
         </div>
         <div id="admin-tab-settings" class="admin-panel-section">
           <h3>App Settings</h3>
+          <div style="margin-bottom:16px;padding:12px;background:#f5f5f5;border-radius:8px;">
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:14px;">
+              <input type="checkbox" id="readonly-toggle" onchange="toggleDeviceReadOnly()" style="width:16px;height:16px;cursor:pointer;">
+              <span>Set this device to read-only</span>
+            </label>
+            <p style="margin:8px 0 0;font-size:12px;color:#666;">This device cannot send messages (view only)</p>
+          </div>
           <button class="setup-wizard-btn secondary" style="width:100%;margin-bottom:10px;" onclick="adminChangePin()">Change Admin PIN</button>
           <button class="setup-wizard-btn secondary" style="width:100%;margin-bottom:10px;" onclick="adminClearUsers()">Clear All Users</button>
           <button class="setup-wizard-btn secondary" style="width:100%;margin-bottom:10px;" onclick="adminResetConfig()">Reset Configuration</button>
@@ -352,7 +359,6 @@
           <button class="font-btn" onclick="adjustFont(-1)">A&#8722;</button>
           <button class="font-btn" onclick="adjustFont(1)">A+</button>
         </div>
-          <button class="settings-btn" id="settings-btn" onclick="openModal('settings')">&#9881;&#65039;</button>
         <button class="settings-btn" id="admin-btn" onclick="showAdminPanel()" title="Admin Panel">⚙️</button>
       </div>
       <button class="collapse-btn" id="header-collapse-btn" onclick="toggleHeaderCollapse()" title="Collapse header">&#9650;</button>
@@ -794,8 +800,27 @@ function showAdminPanel(){
   }
   el('admin-panel').classList.add('visible');
   adminRenderUserList();
+  loadDeviceReadOnlyState();
 }
 function closeAdminPanel(){el('admin-panel').classList.remove('visible');}
+function toggleDeviceReadOnly(){
+  var checkbox=el('readonly-toggle');
+  if(checkbox.checked){
+    ss('fn_device_readonly','1');
+    isReadOnly=true;
+  } else {
+    sr('fn_device_readonly');
+    isReadOnly=false;
+  }
+  applyMode();
+  renderUserPills();
+}
+function loadDeviceReadOnlyState(){
+  var isLocked=sg('fn_device_readonly')==='1';
+  var checkbox=el('readonly-toggle');
+  if(checkbox){checkbox.checked=isLocked;}
+  isReadOnly=isLocked;
+}
 function switchAdminTab(tab){
   var tabs=['users','settings','help'];
   tabs.forEach(function(t){
@@ -956,11 +981,17 @@ function renderUserPills(){
 })();
 
 function applyMode(){
-  // Read-only mode is disabled - all users have full access
-  el('compose').style.display='block';
-  el('messages-area').classList.add('with-compose');
-  el('tab-deleted-btn').style.display='';
-  el('tab-expired-btn').style.display='';
+  if(isReadOnly){
+    el('compose').style.display='none';
+    el('messages-area').classList.remove('with-compose');
+    el('tab-deleted-btn').style.display='none';
+    el('tab-expired-btn').style.display='none';
+  } else {
+    el('compose').style.display='block';
+    el('messages-area').classList.add('with-compose');
+    el('tab-deleted-btn').style.display='';
+    el('tab-expired-btn').style.display='';
+  }
 }
 
 function openModal(mode){
