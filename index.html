@@ -956,27 +956,11 @@ function renderUserPills(){
 })();
 
 function applyMode(){
-  if(isReadOnly){
-    el('lock-icon-btn').classList.add('visible');
-    el('settings-btn').style.display='none';
-    el('readonly-banner').classList.add('visible');
-    USERS.forEach(function(u){el('pill-'+u).disabled=true;});
-    el('pill-derek').className='user-pill active-derek';
-    el('compose').style.display='none';
-    el('messages-area').classList.remove('with-compose');
-    el('tab-deleted-btn').style.display='none';
-    el('tab-expired-btn').style.display='none';
-    setTab('notes');
-  } else {
-    el('lock-icon-btn').classList.remove('visible');
-    el('settings-btn').style.display='';
-    el('readonly-banner').classList.remove('visible');
-    USERS.forEach(function(u){el('pill-'+u).disabled=false;});
-    el('compose').style.display='block';
-    el('messages-area').classList.add('with-compose');
-    el('tab-deleted-btn').style.display='';
-    el('tab-expired-btn').style.display='';
-  }
+  // Read-only mode is disabled - all users have full access
+  el('compose').style.display='block';
+  el('messages-area').classList.add('with-compose');
+  el('tab-deleted-btn').style.display='';
+  el('tab-expired-btn').style.display='';
 }
 
 function openModal(mode){
