@@ -1,6 +1,6 @@
 # Derek's Family Notepad - Multi-Family Deployable Edition
 
-A free, open-source family activity tracker and shared notepad. Create your own instance with one click, configure your Firebase project with a guided walkthrough, and start tracking family activities immediately.
+A free, open-source family activity tracker and shared notepad. Get your family's app running in **10 minutes with no coding required**. No GitHub account needed.
 
 ## ✨ Features
 
@@ -13,139 +13,130 @@ A free, open-source family activity tracker and shared notepad. Create your own 
 - ⚡ **Free & Open Source**: No ads, no tracking, no cost
 - 🔗 **Self-Hosted**: Your data stays with you
 
-## 🚀 Quick Start (Recommended)
+## 🚀 Quick Start (3 Steps, ~10 minutes)
 
-The fastest way to get started: **Click one button, follow 5 simple steps**.
+### Step 1️⃣: Download the App Files
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/[your-username]/family-notepad&utm_source=github&utm_medium=readme)
+1. On this page, click the green **"Code"** button (top right)
+2. Select **"Download ZIP"**
+3. Extract the ZIP file to your computer
+4. **You now have all the files you need!**
 
-> **What happens when you click:**
-> 1. App deploys to Netlify automatically ✓
-> 2. You get a live URL instantly ✓
-> 3. Setup wizard opens to guide Firebase creation
-> 4. Follow 5 simple steps (takes 5 minutes)
-> 5. Start using your app!
+### Step 2️⃣: Deploy to Netlify (Free Hosting)
 
-### No Deploy Button? Manual Setup
+1. Go to [Netlify.com](https://netlify.com)
+2. Click **"Sign Up"** (use email or Google account)
+   - **No credit card required**
+   - Free tier covers everything you need
+3. Once signed in, drag & drop `index.html` onto Netlify
+4. **Wait 30 seconds** ⏳
+5. Netlify gives you a live URL (like `https://your-family-notepad.netlify.app`)
+6. **Your app is live!** ✅
 
-If the button doesn't work:
-1. Fork this repo to your GitHub account
-2. Download `index.html` to your computer
-3. Go to [Netlify](https://netlify.com) and drag-drop `index.html`
-4. Follow the Firebase setup wizard that appears
+### Step 3️⃣: Configure & Start Using
 
-## 📋 Setup Steps (After Deployment)
+1. Open your Netlify URL in a browser
+2. **Setup wizard appears automatically**
+3. Follow the **Firebase Setup Guide** (interactive, 5 steps)
+   - Click the green "Open Firebase Setup Guide" button
+   - Guided walkthrough with direct links
+   - Takes ~5 minutes
+4. **Done!** Your app is ready to use
 
-Once the app loads, the setup wizard will guide you through:
+## 📋 What Happens in the Setup Wizard
 
-1. **Create Firebase Project** (guided walkthrough opens Firebase Console)
-   - 5 simple steps with direct links
-   - Project created automatically
+The app walks you through everything:
+
+1. **Create Firebase Project** (guided step-by-step)
+   - Opens Firebase Console for you
+   - Shows exactly which buttons to click
+   - Takes about 5 minutes
    
-2. **Set Admin PIN** (6+ digits)
-   - You'll use this to manage users
+2. **Set Admin PIN** (you choose a 6+ digit code)
+   - You'll use this to add/remove family members
    - Write it down!
 
-3. **Add First User** (display name → auto-generates username & color)
-   - Can add more users anytime from Admin Panel
+3. **Add First Family Member** (display name → auto-generates username & color)
+   - Can add more anytime from the Admin Panel
 
 4. **Start Using!**
-   - Add messages, schedule activities, manage family info
+   - Share your live URL with family
+   - Everyone can add messages and schedule activities
 
 ## 🎯 Use Cases
 
-### Family Coordination
+**Family Coordination**
 - "Soccer game Friday at 3pm"
 - "Grocery list for Saturday"
 - "Who's cooking dinner?"
 
-### Activity Tracking
+**Activity Tracking**
 - Upcoming appointments and reminders
 - Family events and birthdays
-- Chore assignments and tracking
+- Chore assignments
 
-### Shared Notes
+**Shared Notes**
 - Family announcements
 - Important information
 - Quick reminders
 
-## 🔐 License & Attribution
+## 💾 Files You Get
 
-**MIT License with Commons Clause**
+When you download, you get:
+- `index.html` - Your complete app (everything embedded in one file)
+- `README.md` - This file
+- `LICENSE.md` - License & terms
+- `DEPLOYMENT.md` - Detailed setup guide (if you need help)
 
-- ✅ **Free for personal/family use**
-- ✅ **Modify and customize freely**
-- ⚠️ **Commercial use requires permission** (see LICENSE.md)
-- ✅ **Attribution required** - Credit Matthew Swindells
-
-See [LICENSE.md](LICENSE.md) for complete terms.
-
-## 💾 What You Get
-
-This deployment includes:
-- `index.html` - Complete app (all-in-one file)
-- `LICENSE.md` - License terms
-- `DEPLOYMENT.md` - Detailed deployment guide
-- `netlify.toml` - Netlify configuration
-
-## 🔧 How It Works
-
-1. **One-Click Deploy**: Netlify automatically hosts your app
-2. **Setup Wizard**: Guides you through Firebase project creation
-3. **Dynamic Configuration**: Choose your own Firebase project
-4. **Self-Hosted Data**: Your Firebase project = your data control
-5. **Admin Panel**: Manage users, settings, and preferences from the app
-
-## 📊 Architecture
-
-```
-Your Deployment
-├── App (Netlify)
-│   ├── HTML + CSS + JavaScript (all-in-one file)
-│   └── Firebase SDK (embedded)
-│
-└── Database (Firebase)
-    ├── Your Firebase Project
-    ├── Realtime Database
-    └── Your Family's Data
-```
+That's it! One file to deploy, one file to back up.
 
 ## ❓ FAQ
 
-### Is this secure?
-- Firebase project is yours - you control access
-- Database rules are set to "Test Mode" initially (can be restricted)
-- No data leaves your Firebase project
-- HTTPS/SSL on all connections
+**Q: Do I need a GitHub account?**  
+A: No! Just download the files. No GitHub needed.
 
-### How much does it cost?
-- **Netlify**: Free tier covers most families (12.5K requests/month)
-- **Firebase**: Free tier includes 100 connections, 1GB storage
-- Both have generous free tiers that work for families
+**Q: Is this free?**  
+A: Completely free! 
+- Netlify: Free tier (unlimited for most families)
+- Firebase: Free tier (1GB storage, 100 concurrent connections)
+- No credit card required for either
 
-### Can I customize it?
-Yes! Download the code and modify it. You have full source code.
+**Q: Is my data secure?**  
+A: Yes! Your Firebase project is yours alone. 
+- No one else can see your data
+- HTTPS encryption on all connections
+- You control the database
 
-### What if I stop using it?
-- Your data stays in Firebase
-- You can export or download it anytime
-- Just stop paying/hosting and it goes away
+**Q: Can I customize it?**  
+A: Yes! You have the full source code. Modify it however you like.
 
-### Can I share this with other families?
-Yes! See [DEPLOYMENT_SEPARATE.md](DEPLOYMENT_SEPARATE.md) for how to create a separate template for others.
+**Q: What if I stop using it?**  
+A: Your data stays in Firebase. You can export it anytime. Just stop hosting and it disappears.
 
-## 🐛 Support & Issues
+**Q: Can I share this with friends?**  
+A: Yes! Send them this link: `https://github.com/[your-username]/family-notepad`  
+They download the files and follow the same steps.
 
-- **Setup problems?** See [DEPLOYMENT.md](DEPLOYMENT.md)
-- **License questions?** See [LICENSE.md](LICENSE.md)
-- **Want to improve it?** Fork and submit improvements!
+**Q: Do they need to pay anything?**  
+A: No. They create their own free Firebase and Netlify accounts. Both have generous free tiers.
 
-## 📚 Documentation
+## 🔐 License & Privacy
 
-- **[DEPLOYMENT.md](DEPLOYMENT.md)** - Detailed setup guide
-- **[DEPLOYMENT_SEPARATE.md](DEPLOYMENT_SEPARATE.md)** - Guide for dual deployments
+**License**: MIT + Commons Clause
+- ✅ Free for personal/family use
+- ✅ Modify and customize freely  
+- ⚠️ Commercial use requires permission (see [LICENSE.md](LICENSE.md))
+- ✅ Attribution required - Credit Matthew Swindells
+
+**Your Data**: 
+- Stays in your Firebase project
+- You control everything
+- See [LICENSE.md](LICENSE.md) for complete terms
+
+## 📚 More Help
+
+- **[DEPLOYMENT.md](DEPLOYMENT.md)** - Step-by-step setup guide (if needed)
 - **[LICENSE.md](LICENSE.md)** - License and terms
-- **[CODEBASE_OVERVIEW.md](CODEBASE_OVERVIEW.md)** - Technical overview
 
 ## 🙏 Credits
 
@@ -153,16 +144,17 @@ Yes! See [DEPLOYMENT_SEPARATE.md](DEPLOYMENT_SEPARATE.md) for how to create a se
 **License**: MIT + Commons Clause  
 **Built with**: Firebase, Netlify, Vanilla JavaScript
 
-## 🚀 Next Steps
-
-1. **Click Deploy Button** (above) or download `index.html`
-2. **Follow Setup Wizard** when app loads
-3. **Create Firebase Project** using guided steps
-4. **Add your family members** as users
-5. **Start using!**
-
-Questions? See [DEPLOYMENT.md](DEPLOYMENT.md) for complete instructions.
-
 ---
+
+## 🚀 Ready to Get Started?
+
+1. Download the files (green "Code" button above)
+2. Sign up for Netlify (email or Google)
+3. Drag `index.html` to Netlify
+4. Follow the Firebase setup guide in the app
+5. Share your URL with family
+6. Done!
+
+**That's it. No technical knowledge required.** 🎉
 
 Made with ❤️ for families. Free, open-source, and yours to customize.
