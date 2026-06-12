@@ -13,35 +13,20 @@ A free, open-source family activity tracker and shared notepad. Get your family'
 - ⚡ **Free & Open Source**: No ads, no tracking, no cost
 - 🔗 **Self-Hosted**: Your data stays with you
 
-## 🚀 Quick Start (3 Steps, ~10 minutes)
+## 🚀 Quick Start (3 Simple Steps)
 
-### Step 1️⃣: Download the App Files
+**👉 [START HERE: Open the Installer](install.html)** 
 
-1. On this page, click the green **"Code"** button (top right)
-2. Select **"Download ZIP"**
-3. Extract the ZIP file to your computer
-4. **You now have all the files you need!**
+The installer page walks you through everything with clickable buttons. Takes ~5 minutes.
 
-### Step 2️⃣: Deploy to Netlify (Free Hosting)
+### What You'll Do:
 
-1. Go to [Netlify.com](https://netlify.com)
-2. Click **"Sign Up"** (use email or Google account)
-   - **No credit card required**
-   - Free tier covers everything you need
-3. Once signed in, drag & drop `index.html` onto Netlify
-4. **Wait 30 seconds** ⏳
-5. Netlify gives you a live URL (like `https://your-family-notepad.netlify.app`)
-6. **Your app is live!** ✅
+1. **Download** `index.html` (that's it—one file!)
+2. **Sign up for Netlify** (free, no credit card)
+3. **Drag the file to Netlify** and follow the setup wizard
+4. **Share the URL** with your family
 
-### Step 3️⃣: Configure & Start Using
-
-1. Open your Netlify URL in a browser
-2. **Setup wizard appears automatically**
-3. Follow the **Firebase Setup Guide** (interactive, 5 steps)
-   - Click the green "Open Firebase Setup Guide" button
-   - Guided walkthrough with direct links
-   - Takes ~5 minutes
-4. **Done!** Your app is ready to use
+No GitHub confusion. No file listings. Just simple steps.
 
 ## 📋 What Happens in the Setup Wizard
 
