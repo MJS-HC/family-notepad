@@ -1,0 +1,25 @@
+# Netlify Configuration for Derek's Family Notepad
+# This file enables automated deployment and configuration
+
+[build]
+  publish = "."
+  command = "echo 'Static site - no build needed'"
+
+# Site metadata
+[context.production]
+  command = "echo 'Deploying Multi-Family Notepad Template'"
+
+# Redirect for compatibility
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers for security
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"

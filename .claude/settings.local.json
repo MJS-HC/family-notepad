@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell -Command \"Get-Content 'C:\\\\Users\\\\matth\\\\OneDrive\\\\Claude Code\\\\Diary App\\\\alerts.html' -Tail 3000 | wc -l\")",
+      "Skill(code-review)",
+      "Skill(code-review:*)",
+      "Bash(git init *)",
+      "PowerShell($indexContent = Get-Content \"C:\\\\Users\\\\matth\\\\OneDrive\\\\Claude Code\\\\Diary App\\\\index.html\" -Raw; $lines = $indexContent -split \"`n\"; $fbendLine = $lines | Select-String -Pattern \"<!--FBEND-->\" | % {$lines.IndexOf\\($_\\)}; Write-Host \"Firebase end around line:\"; $lines | Select-String -Pattern \"<!--FBEND-->\" -Context 0,5)",
+      "Bash(grep -n \"<!--APPSTART-->\\\\|var FIREBASE_CFG\\\\|var USERS =\\\\|^  }\\\\\\)\\\\\\(\\\\\\);$\" index.html)",
+      "Bash(git config *)",
+      "Bash(git add *)",
+      "Bash(git commit -m 'Add multi-family deployable setup wizard and admin panel *)",
+      "Bash(node -c index.html)",
+      "mcp__Claude_in_Chrome__navigate",
+      "Bash(git commit -m 'Rewrite LICENSE using industry-standard legal framework *)",
+      "Bash(git commit -m 'Update documentation to reflect industry-standard MIT + Commons Clause license *)",
+      "Bash(git commit -m 'Add comprehensive dual-deployment guide *)",
+      "Bash(git commit -m 'Implement Option B: Automated Netlify deploy + Guided Firebase setup *)"
+    ]
+  }
+}
