@@ -1,6 +1,6 @@
-# Matthew's Family Notepad - Deployment Guide
+# Family Diary - Deployment Guide
 
-This is the **Multi-Family Deployable Edition** of Matthew's Family Notepad. Each family can deploy this app to their own Firebase project and host it on the web.
+This is the **Multi-Family Deployable Edition** of Family Diary. Each family can deploy this app to their own Firebase project and host it on the web.
 
 ## What You'll Need
 
@@ -274,7 +274,7 @@ This allows URLs like `family-notes.yourdomain.com` instead of `github.io` URLs.
 
 ## Feedback and Updates
 
-This is version 2.0 of Matthew's Family Notepad. If you have suggestions or find issues, please report them.
+This is version 2.0 of Family Diary. If you have suggestions or find issues, please report them.
 
 ---
 
@@ -282,7 +282,7 @@ This is version 2.0 of Matthew's Family Notepad. If you have suggestions or find
 
 ### Important Legal Notice
 
-**Matthew's Family Notepad** is licensed under the **MIT License with Commons Clause**.
+**Family Diary** is licensed under the **MIT License with Commons Clause**.
 
 #### License Summary
 
@@ -331,7 +331,7 @@ See `LICENSE.md` for the complete, legally binding license terms.
 When using or distributing this software, include:
 
 ```
-Matthew's Family Notepad
+Family Diary
 Copyright (c) 2026 Matthew Swindells
 Licensed under MIT License with Commons Clause
 https://github.com/[your-repo]

@@ -1,4 +1,4 @@
-# Matthew's Family Notepad - Multi-Family Deployable Edition
+# Family Diary - Multi-Family Deployable Edition
 
 A free, open-source family activity tracker and shared notepad. Get your family's app running in **10 minutes with no coding required**. No GitHub account needed.
 
@@ -135,14 +135,26 @@ A: No. They create their own free Firebase and Netlify accounts. Both have gener
 
 ## 📚 More Help
 
-- **[DEPLOYMENT.md](DEPLOYMENT.md)** - Step-by-step setup guide (if needed)
+- **[DEPLOYMENT.md](DEPLOYMENT.md)** - Detailed setup & troubleshooting guide
 - **[LICENSE.md](LICENSE.md)** - License and terms
+- **Troubleshooting**: See DEPLOYMENT.md section "Troubleshooting" if your Netlify URL shows a blank page
 
 ## 🙏 Credits
 
 **Original Author**: Matthew Swindells  
-**License**: MIT + Commons Clause  
+**License**: MIT + Commons Clause (see [LICENSE.md](LICENSE.md))
 **Built with**: Firebase, Netlify, Vanilla JavaScript
+
+## 📝 Note on Netlify Domain
+
+Your Netlify URL is auto-generated (like `meek-stroopwafel-4b8cf0.netlify.app`). To customize it:
+
+1. Log into [Netlify](https://app.netlify.com)
+2. Go to **Site settings** → **Domain management**
+3. Click **Edit site name** and enter something like `my-family-diary`
+4. Your new URL will be: `https://my-family-diary.netlify.app`
+
+(You can also add a custom domain like `family-diary.yourdomain.com` here)
 
 ---
 

@@ -1,4 +1,4 @@
-# Matthew's Family Notepad - License
+# Family Diary - License
 
 ## MIT License with Commons Clause
 
@@ -108,9 +108,9 @@ If you use, modify, or distribute this Software, you must include clear
 attribution stating:
 
 ```
-Matthew's Family Notepad
+Family Diary
 Copyright (c) 2026 Matthew Swindells
-Original source: https://github.com/[original-repo]
+Original source: https://github.com/MJS-HC/family-notepad
 ```
 
 This attribution must be included in:

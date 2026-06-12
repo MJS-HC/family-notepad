@@ -1,7 +1,7 @@
-# Matthew's Family Notepad - Codebase Overview
+# Family Diary - Codebase Overview
 
 ## Project Structure
-- **index.html** (976 lines) - Matthew's Family Notepad
+- **index.html** (976 lines) - Family Diary (Multi-family deployable)
 - **kingsland.html** (734 lines) - Derek's Activity Notepad (Original)
 - **alerts.html** (660 lines) - Derek's Alerts (Original)
 

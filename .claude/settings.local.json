@@ -15,7 +15,10 @@
       "Bash(git commit -m 'Rewrite LICENSE using industry-standard legal framework *)",
       "Bash(git commit -m 'Update documentation to reflect industry-standard MIT + Commons Clause license *)",
       "Bash(git commit -m 'Add comprehensive dual-deployment guide *)",
-      "Bash(git commit -m 'Implement Option B: Automated Netlify deploy + Guided Firebase setup *)"
+      "Bash(git commit -m 'Implement Option B: Automated Netlify deploy + Guided Firebase setup *)",
+      "Bash(git commit -m 'Simplify README: Remove GitHub dependency, emphasize Netlify drag-drop *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
     ]
   }
 }
