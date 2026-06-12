@@ -940,7 +940,7 @@ function renderUserPills(){
       return;
     }
     var config=loadConfig();
-    if(!config){
+    if(!config || !config.firebaseConfig){
       el('loading-screen').style.display='none';
       initConfigDefaults();
       showSetupWizard();
