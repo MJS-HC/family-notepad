@@ -424,18 +424,15 @@
 </div>
 <!--APPSTART-->
 <script>
-var FIREBASE_CFG = {
-  apiKey:      "AIzaSyAxoyvPSNdJuh0fQBra_PJf-mNITrDzvdg",
-  authDomain:  "m-r-d-notepad.firebaseapp.com",
-  databaseURL: "https://m-r-d-notepad-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId:   "m-r-d-notepad"
-};
-var DEREK_PIN = '1234';
-var USERS = ['matthew','rebecca','derek','katharine','jemima','harry','oscar'];
-var USER_COLORS = {matthew:'#3a6b52',rebecca:'#7b3a6b',derek:'#6b5a3a',katharine:'#4a6b7b',jemima:'#7b6b4a',harry:'#4a4a7b',oscar:'#7b4a4a'};
+// Multi-family deployable version - configuration loaded from setup wizard or localStorage
+var FIREBASE_CFG = null;
+var adminPin = null;
+var USERS = [];
+var USER_COLORS = {};
+var DISPLAY_NAMES = {};
 
 var db;
-var currentUser = sg('fn_user') || 'matthew';
+var currentUser = sg('fn_user') || null;
 var currentTab  = 'notes';
 var tagDate = '', tagTime = '', showDP = false;
 var messages = {}, deletedMsgs = {}, expiredMsgs = {}, dragState = {};
@@ -950,6 +947,7 @@ function renderUserPills(){
       return;
     }
     FIREBASE_CFG=config.firebaseConfig;
+    adminPin=config.adminPin;
     USERS=Object.keys(config.users).map(function(k){return config.users[k].username;});
     USER_COLORS={};
     DISPLAY_NAMES={};
@@ -958,14 +956,14 @@ function renderUserPills(){
       USER_COLORS[u.username]=u.color;
       DISPLAY_NAMES[u.username]=u.displayName;
     });
-    currentUser=USERS[0]||'matthew';
+    currentUser=USERS[0];
     var app=initFn(FIREBASE_CFG,'fn'+Date.now());
     db=dbFn(app);
-    isReadOnly=sg('fn_derek_locked')==='1';
+    isReadOnly=false;
     el('loading-screen').style.display='none';
     el('app').style.display='flex';
     applyMode();
-    if(!isReadOnly) setUser(currentUser==='derek'?USERS[0]:currentUser);
+    if(!isReadOnly) setUser(currentUser);
     renderUserPills();
     listen();
   }catch(e){
@@ -1018,7 +1016,7 @@ function openModal(mode){
 }
 function closeModal(){el('pin-modal').classList.remove('visible');}
 function handleModalConfirm(){
-  if(el('modal-pin').value!==DEREK_PIN){
+  if(el('modal-pin').value!==adminPin){
     el('modal-error').textContent='Incorrect PIN. Try again.';
     el('modal-pin').value=''; el('modal-pin').focus(); return;
   }
