@@ -1,9 +1,9 @@
-# Derek's Notepad App - Codebase Overview
+# Matthew's Family Notepad - Codebase Overview
 
 ## Project Structure
-- **index.html** (976 lines) - Derek's Family Notepad
-- **kingsland.html** (734 lines) - Derek's Activity Notepad  
-- **alerts.html** (660 lines) - Derek's Notepad Alerts
+- **index.html** (976 lines) - Matthew's Family Notepad
+- **kingsland.html** (734 lines) - Derek's Activity Notepad (Original)
+- **alerts.html** (660 lines) - Derek's Alerts (Original)
 
 ## Technology Stack
 - **Frontend**: HTML5, Vanilla JavaScript

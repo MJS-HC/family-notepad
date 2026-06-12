@@ -1,4 +1,4 @@
-# Derek's Family Notepad - License
+# Matthew's Family Notepad - License
 
 ## MIT License with Commons Clause
 
@@ -108,7 +108,7 @@ If you use, modify, or distribute this Software, you must include clear
 attribution stating:
 
 ```
-Derek's Family Notepad
+Matthew's Family Notepad
 Copyright (c) 2026 Matthew Swindells
 Original source: https://github.com/[original-repo]
 ```

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Derek's Family Notepad</title>
+<title>Matthew's Family Notepad</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
 <!--FBSTART-->
@@ -195,7 +195,7 @@
 </head>
 <body>
 <div id="loading-screen">
-  <h1>&#128203; Derek's Family Notepad</h1>
+  <h1>&#128203; Matthew's Family Notepad</h1>
   <div class="spinner"></div>
   <p style="font-size:13px;">Connecting&hellip;</p>
 </div>
@@ -307,7 +307,7 @@
           <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
             <h4 style="margin:0 0 10px;font-size:14px;">License & Attribution</h4>
             <p style="font-size:12px;color:var(--ink-mid);margin:0 0 12px;">
-              <strong>Derek's Family Notepad</strong><br>
+              <strong>Matthew's Family Notepad</strong><br>
               Original Author: Matthew Swindells
             </p>
             <p style="font-size:12px;color:var(--ink-light);margin:0 0 10px;">
@@ -349,7 +349,7 @@
   </div>
   <div id="header">
     <div class="header-top">
-      <h1>&#128203; Derek's Family Notepad</h1>
+      <h1>&#128203; Matthew's Family Notepad</h1>
       <div class="header-right">
         <span><span class="sync-dot syncing" id="sync-dot"></span><span class="sync-label" id="sync-label">CONNECTING</span></span>
         <button class="print-btn" onclick="printTab()">Print</button>
@@ -939,7 +939,7 @@ function renderUserPills(){
   try{
     var initFn=window.fn_initializeApp, dbFn=window.fn_getDatabase, onValFn=window.fn_onValue, refFn=window.fn_ref;
     if(typeof initFn!=='function'){
-      el('loading-screen').innerHTML='<h1>&#128203; Derek\'s Family Notepad</h1><p style="color:#c0392b;margin-top:16px;">Firebase failed to load. Please refresh.</p>';
+      el('loading-screen').innerHTML='<h1>&#128203; Matthew\'s Family Notepad</h1><p style="color:#c0392b;margin-top:16px;">Firebase failed to load. Please refresh.</p>';
       return;
     }
     var config=loadConfig();
@@ -969,7 +969,7 @@ function renderUserPills(){
     renderUserPills();
     listen();
   }catch(e){
-    el('loading-screen').innerHTML='<h1>&#128203; Derek\'s Family Notepad</h1><p style="color:#c0392b;margin-top:16px;">Error: '+e.message+'</p>';
+    el('loading-screen').innerHTML='<h1>&#128203; Matthew\'s Family Notepad</h1><p style="color:#c0392b;margin-top:16px;">Error: '+e.message+'</p>';
   }
 })();
 
@@ -1416,7 +1416,7 @@ function printTab(){
     else exps.forEach(function(m){rows+=printCard(m,"\u23F0 Expired "+ds(m.deletedAt)+" \u00B7 "+ts(m.deletedAt));});
   }
   var css="body{font-family:Georgia,serif;margin:24px;color:#2a2018;background:white;font-size:14px}h2{font-size:17px;margin:0 0 3px;font-weight:700}p.sub{font-size:12px;color:#888;margin:0 0 18px;padding-bottom:10px;border-bottom:1px solid #ddd}.sec{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#aaa;margin:12px 0 6px}.card{border:1px solid #ddd;border-radius:8px;padding:11px 14px;margin-bottom:10px;break-inside:avoid;page-break-inside:avoid}.card.matthew{border-left:5px solid #3a6b52}.card.rebecca{border-left:5px solid #7b3a6b}.card.derek{border-left:5px solid #6b5a3a}.card.katharine{border-left:5px solid #4a6b7b}.card.jemima{border-left:5px solid #7b6b4a}.card.harry{border-left:5px solid #4a4a7b}.card.oscar{border-left:5px solid #7b4a4a}.card.today{background:#fffbe6;border-color:#f5c842}.meta{display:flex;justify-content:space-between;margin-bottom:5px}.sender{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em}.when{font-size:11px;color:#aaa}.badge{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:12px;margin-bottom:5px}.badge.today{background:#f5c842;color:#5a4000}.badge.soon{background:#fde8c0;color:#8a4a00}.badge.future{background:#eee;color:#888}.text{font-size:15px;line-height:1.6;white-space:pre-wrap;word-break:break-word;margin:0}.note{font-size:11px;color:#e67e22;margin-top:5px}";
-  var doc='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Derek\'s Family Notepad - '+title+'</title><style>'+css+'</style></head><body><h2>Derek\'s Family Notepad</h2><p class="sub">'+title+' &mdash; '+dateStr+'</p>'+rows+'<script>window.onload=function(){window.print();};window.onafterprint=function(){window.close()};<\/script></body></html>';
+  var doc='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Matthew\'s Family Notepad - '+title+'</title><style>'+css+'</style></head><body><h2>Matthew\'s Family Notepad</h2><p class="sub">'+title+' &mdash; '+dateStr+'</p>'+rows+'<script>window.onload=function(){window.print();};window.onafterprint=function(){window.close()};<\/script></body></html>';
   var w=window.open("","_blank","width=800,height=600");
   if(w){w.document.write(doc);w.document.close();}
 }

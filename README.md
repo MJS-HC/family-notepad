@@ -1,4 +1,4 @@
-# Derek's Family Notepad - Multi-Family Deployable Edition
+# Matthew's Family Notepad - Multi-Family Deployable Edition
 
 A free, open-source family activity tracker and shared notepad. Get your family's app running in **10 minutes with no coding required**. No GitHub account needed.
 
