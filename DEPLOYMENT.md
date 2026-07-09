@@ -27,60 +27,39 @@ This is the **Multi-Family Deployable Edition** of Family Diary. Each family can
 
 ### 1.3 Create a Realtime Database
 
-1. In the Firebase console, go to **Build** → **Realtime Database** (left sidebar)
-2. Click **"Create Database"**
-3. **Location**: Select a region close to you (Europe, US, etc.)
-4. **Security Rules**: Select **"Start in test mode"** (we'll secure it later)
-5. Click **"Enable"**
-6. Wait for database to initialize
+Your Firebase project starts without a database. You need to create one:
 
-### 1.4 Get Your Credentials
+1. In the Firebase console left sidebar, find **"Databases and storage"** (or scroll to find it)
+2. Click **Realtime Database** 
+3. Click **"Create Database"**
+4. **Location**: Select a region close to you (e.g., `europe-west1` for Europe, `us-central1` for US)
+5. **Security Rules**: Select **"Start in test mode"** 
+6. Click **"Enable"**
+7. Wait for the database to initialize (1-2 minutes)
+8. You'll see a screen showing **"Data"** with your database URL at the top — **save this URL**, you'll need it later
 
-You need **4 credentials** from Firebase. They're in different places:
+### 1.4 Enable Anonymous Authentication
 
-**For API Key, Auth Domain, and Project ID:**
-1. In Firebase Console, click the **Settings gear icon** (top left)
-2. Click **"Project settings"**
-3. Go to the **"General"** tab
-4. Scroll down to **"Your apps"** section
-5. Click the **Web icon** (`</>`) to create a web app (if not already created)
-6. Copy the values:
-   - **API Key** (starts with `AIza...`)
-   - **Auth Domain** (looks like `your-project.firebaseapp.com`)
-   - **Project ID** (shown on this page)
+The app requires Firebase Anonymous Authentication. This must be done before you use the setup wizard:
 
-**For Database URL:**
-1. Go to **Build** → **Realtime Database** (left sidebar)
-2. Copy the URL at the top (looks like `https://your-project-rtdb.firebaseio.com`)
-
-Keep all 4 values nearby - you'll need them in Step 3.
-
-### 1.5 Enable Anonymous Authentication
-
-The app now requires Firebase Anonymous Authentication to function. This is a quick, one-time setup:
-
-1. In Firebase Console (with your project selected), go to **Security** → **Authentication** (in the left sidebar)
-2. If you see a **"Get started"** button, click it first to initialize Authentication for this project
-3. Click the **"Sign-in method"** tab at the top
+1. In the Firebase console left sidebar, go to **Security** → **Authentication**
+   - (Note: On some Firebase UIs, this is under the **"Security"** category, not "Build")
+2. If you see a **"Get started"** button, click it to initialize Authentication
+3. Click the **"Sign-in method"** tab
 4. Find **"Anonymous"** in the provider list and click it
-5. Toggle **"Enable"** (switch to ON)
+5. Toggle the switch to **"Enable"** (it should turn blue)
 6. Click **"Save"**
 
-Without this step, the setup wizard will fail with a "Sign-in failed" error when you try to test your credentials.
+**Important**: Without this step, the setup wizard will fail with "Sign-in failed" error.
 
-### 1.6 Secure Your Database
+### 1.5 Update Realtime Database Security Rules
 
-After the app is working in test mode, lock down your Realtime Database with proper security rules:
+Now that Anonymous Authentication is enabled, update your database rules to require authentication:
 
-1. Go to **Realtime Database** (left sidebar)
-2. Click the **"Rules"** tab
-3. Replace the entire content with:
-
-If you want to restrict write access to your app only:
-
-1. Go to **Build** → **Realtime Database**
-2. Click the **"Rules"** tab
-3. Replace the entire content with:
+1. In the Firebase console left sidebar, click **Realtime Database**
+2. Click the **"Rules"** tab (next to "Data")
+3. Select all the text in the rules editor and delete it
+4. Copy and paste this exactly:
 
 ```json
 {
@@ -91,9 +70,33 @@ If you want to restrict write access to your app only:
 }
 ```
 
-4. Click **"Publish"**
+5. Click **"Publish"**
+6. Wait for the publish to complete
 
-This requires users to be authenticated (via the app) to read or write. The app handles this automatically by signing in anonymously before any database operation, so your family members won't notice any difference.
+This ensures only authenticated users can read or write to your database. The app handles authentication automatically, so your family won't notice any difference.
+
+### 1.6 Get Your Credentials
+
+Now collect the 4 credentials the setup wizard needs. They're in different places:
+
+**For API Key, Auth Domain, and Project ID:**
+1. Click the **⚙️ Settings gear icon** (top left of Firebase Console)
+2. Click **"Project settings"**
+3. Go to the **"General"** tab
+4. Scroll down to **"Your apps"** section
+5. Click the **Web app icon** (`</>`) — if one exists, select it; if not, click to create a new one
+6. You'll see a code block with your config. Copy these values:
+   - **API Key** (the `apiKey:` value, starts with `AIza...`)
+   - **Auth Domain** (the `authDomain:` value, looks like `your-project.firebaseapp.com`)
+   - **Project ID** (the `projectId:` value, e.g., `my-project`)
+
+**For Database URL:**
+1. Go back to **Realtime Database** (left sidebar)
+2. Make sure you're on the **"Data"** tab
+3. At the top of the page, you'll see your database URL (looks like `https://your-project-default-rtdb.region.firebasedatabase.app`)
+4. Copy this URL
+
+Keep all 4 values nearby — you'll need them in Step 3 for the setup wizard.
 
 ---
 
@@ -115,13 +118,13 @@ This requires users to be authenticated (via the app) to read or write. The app 
 
 ### 3.2 Step 1: Firebase Configuration
 
-1. **API Key**: Paste your Firebase API Key from Step 1.4
+1. **API Key**: Paste your Firebase API Key from Step 1.6
 2. **Auth Domain**: Paste your Auth Domain (e.g., `your-app.firebaseapp.com`)
-3. **Database URL**: Paste your Database URL (e.g., `https://your-app-rtdb.firebaseio.com`)
-4. **Project ID**: Paste your Project ID
+3. **Database URL**: Paste your Database URL from Step 1.6 (e.g., `https://your-app-default-rtdb.firebaseio.com`)
+4. **Project ID**: Paste your Project ID from Step 1.6
 5. Click **"Test & Continue →"** to verify the connection
 6. If successful, proceed to Step 2
-   - **If you get a "Sign-in failed" error**: You haven't enabled Anonymous authentication yet (Step 1.5). Go back to Firebase Console, enable it, then try again.
+   - **If you get a "Sign-in failed" error**: You didn't complete Step 1.4 (Enable Anonymous Authentication). Go back to Firebase Console and enable it, then try the test again.
 
 ### 3.3 Step 2: Create Admin PIN
 
