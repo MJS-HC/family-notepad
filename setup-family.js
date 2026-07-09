@@ -140,7 +140,7 @@ async function main() {
     adminPin: '',
     users: {}
   };
-  const configInjection = `\n(function(){try{localStorage.setItem('fn_config_v2',${JSON.stringify(JSON.stringify(config_v2))});}catch(e){}})()\n`;
+  const configInjection = `<script>(function(){try{localStorage.setItem('fn_config_v2',${JSON.stringify(JSON.stringify(config_v2))});}catch(e){console.error('Failed to save config:',e)}})()</script>\n`;
   const appStartIndex = htmlContent.indexOf('<!--APPSTART-->');
 
   if (appStartIndex === -1) {
