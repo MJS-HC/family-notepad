@@ -67,17 +67,36 @@ async function main() {
     console.log('  2. Click "General" tab');
     console.log('  3. Scroll to "Your apps" and click Web icon (</>)');
     console.log('  4. Copy the firebaseConfig object\n');
+    console.log('Paste the JSON (it can span multiple lines), then press Enter twice:\n');
 
-    const configStr = await prompt('Paste your Firebase config (as JSON): ');
-    if (!configStr) {
-      console.error('❌ Firebase config is required');
-      process.exit(1);
+    let configStr = '';
+    let lastWasEmpty = false;
+
+    // Read until we get two consecutive empty lines or valid JSON
+    while (true) {
+      const line = await prompt('');
+
+      if (!line) {
+        if (lastWasEmpty && configStr.trim()) break;
+        lastWasEmpty = true;
+      } else {
+        lastWasEmpty = false;
+        configStr += (configStr ? '\n' : '') + line;
+      }
+
+      // Try to parse what we have so far
+      if (configStr.trim()) {
+        try {
+          firebaseConfig = JSON.parse(configStr.trim());
+          break;
+        } catch (e) {
+          // Not valid JSON yet, keep reading
+        }
+      }
     }
 
-    try {
-      firebaseConfig = JSON.parse(configStr);
-    } catch (e) {
-      console.error('❌ Invalid JSON. Make sure to paste the entire firebaseConfig object');
+    if (!firebaseConfig) {
+      console.error('❌ Firebase config is required');
       process.exit(1);
     }
   }
