@@ -55,7 +55,26 @@ You need **4 credentials** from Firebase. They're in different places:
 
 Keep all 4 values nearby - you'll need them in Step 3.
 
-### 1.5 Secure Your Database (Optional but Recommended)
+### 1.5 Enable Anonymous Authentication
+
+The app now requires Firebase Anonymous Authentication to function. This is a quick, one-time setup:
+
+1. In Firebase Console (with your project selected), go to **Security** → **Authentication** (in the left sidebar)
+2. If you see a **"Get started"** button, click it first to initialize Authentication for this project
+3. Click the **"Sign-in method"** tab at the top
+4. Find **"Anonymous"** in the provider list and click it
+5. Toggle **"Enable"** (switch to ON)
+6. Click **"Save"**
+
+Without this step, the setup wizard will fail with a "Sign-in failed" error when you try to test your credentials.
+
+### 1.6 Secure Your Database
+
+After the app is working in test mode, lock down your Realtime Database with proper security rules:
+
+1. Go to **Realtime Database** (left sidebar)
+2. Click the **"Rules"** tab
+3. Replace the entire content with:
 
 If you want to restrict write access to your app only:
 
@@ -66,15 +85,15 @@ If you want to restrict write access to your app only:
 ```json
 {
   "rules": {
-    ".read": true,
-    ".write": false
+    ".read": "auth != null",
+    ".write": "auth != null"
   }
 }
 ```
 
 4. Click **"Publish"**
 
-This prevents random people from writing to your database (read is still allowed for the app to function).
+This requires users to be authenticated (via the app) to read or write. The app handles this automatically by signing in anonymously before any database operation, so your family members won't notice any difference.
 
 ---
 
@@ -102,6 +121,7 @@ This prevents random people from writing to your database (read is still allowed
 4. **Project ID**: Paste your Project ID
 5. Click **"Test & Continue →"** to verify the connection
 6. If successful, proceed to Step 2
+   - **If you get a "Sign-in failed" error**: You haven't enabled Anonymous authentication yet (Step 1.5). Go back to Firebase Console, enable it, then try again.
 
 ### 3.3 Step 2: Create Admin PIN
 
