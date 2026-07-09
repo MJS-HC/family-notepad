@@ -964,6 +964,41 @@ function renderUserPills(){
 }
 
 var fnBooted=false;
+var db=null;
+function saveFamilySetup(){
+  try{
+    var familyName=document.getElementById('setup-family-name').value.trim();
+    var adminPin=document.getElementById('setup-admin-pin').value;
+    var firstUserName=document.getElementById('setup-first-user').value.trim();
+    if(!familyName){alert('Family name is required');return;}
+    if(!adminPin||adminPin.length<6){alert('PIN must be at least 6 digits');return;}
+    if(!firstUserName){alert('First user name is required');return;}
+    el('loading-screen').innerHTML='<p>Setting up...</p>';
+    var username=firstUserName.toLowerCase().replace(/[^a-z0-9]/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');
+    var color=['#FF6B6B','#4ECDC4','#45B7D1','#FFA07A','#98D8C8','#F7DC6F','#BB8FCE','#85C1E2','#F8B88B','#52C7A1'][Math.floor(Math.random()*10)];
+    var userId='user_'+Date.now();
+    var userData={};
+    userData[userId]={displayName:firstUserName,username:username,color:color,createdAt:Date.now()};
+    if(!db){console.error('Database not ready');alert('Database connection failed. Please refresh.');return;}
+    window.fn_set(window.fn_ref(db,'familyName'),familyName);
+    window.fn_set(window.fn_ref(db,'adminPin'),adminPin);
+    window.fn_set(window.fn_ref(db,'users'),userData);
+    currentConfig={firebaseConfig:FIREBASE_CFG,adminPin:adminPin,users:userData};
+    saveConfig(currentConfig);
+    USERS=[username];
+    USER_COLORS={};
+    DISPLAY_NAMES={};
+    USER_COLORS[username]=color;
+    DISPLAY_NAMES[username]=firstUserName;
+    currentUser=username;
+    el('app-title').textContent='📔 '+familyName;
+    setTimeout(function(){location.reload();},500);
+  }catch(e){
+    console.error('Setup error:',e);
+    alert('Error during setup: '+e.message);
+    el('loading-screen').innerHTML='<button onclick="location.reload()" style="padding:10px 20px;background:#667eea;color:white;border:none;border-radius:4px;cursor:pointer;">Refresh and Try Again</button>';
+  }
+}
 function fnBoot(){
   if(fnBooted)return;
   fnBooted=true;
@@ -1022,40 +1057,6 @@ function fnBoot(){
     }
     function showFamilySetupModal(){
       el('loading-screen').innerHTML='<div style="padding:40px;text-align:center;"><h2 style="margin-bottom:20px;">🎉 Welcome to Family Diary</h2><p style="margin-bottom:30px;color:#666;">Let\'s set up your family.</p><div style="max-width:400px;margin:0 auto;text-align:left;"><label style="display:block;margin-bottom:5px;font-weight:bold;">Family Name</label><input type="text" id="setup-family-name" placeholder="e.g., The Grogans" style="width:100%;padding:8px;margin-bottom:20px;border:1px solid #ccc;border-radius:4px;box-sizing:border-box;"><label style="display:block;margin-bottom:5px;font-weight:bold;">Admin PIN (6+ digits)</label><input type="password" id="setup-admin-pin" placeholder="e.g., 123456" style="width:100%;padding:8px;margin-bottom:20px;border:1px solid #ccc;border-radius:4px;box-sizing:border-box;"><label style="display:block;margin-bottom:5px;font-weight:bold;">First User Name</label><input type="text" id="setup-first-user" placeholder="e.g., Liz" style="width:100%;padding:8px;margin-bottom:30px;border:1px solid #ccc;border-radius:4px;box-sizing:border-box;"><button onclick="saveFamilySetup()" style="width:100%;padding:10px;background:#4CAF50;color:white;border:none;border-radius:4px;font-weight:bold;cursor:pointer;">Create Family Diary</button></div></div>';
-    }
-    function saveFamilySetup(){
-      try{
-        var familyName=document.getElementById('setup-family-name').value.trim();
-        var adminPin=document.getElementById('setup-admin-pin').value;
-        var firstUserName=document.getElementById('setup-first-user').value.trim();
-        if(!familyName){alert('Family name is required');return;}
-        if(!adminPin||adminPin.length<6){alert('PIN must be at least 6 digits');return;}
-        if(!firstUserName){alert('First user name is required');return;}
-        el('loading-screen').innerHTML='<p>Setting up...</p>';
-        var username=firstUserName.toLowerCase().replace(/[^a-z0-9]/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');
-        var color=['#FF6B6B','#4ECDC4','#45B7D1','#FFA07A','#98D8C8','#F7DC6F','#BB8FCE','#85C1E2','#F8B88B','#52C7A1'][Math.floor(Math.random()*10)];
-        var userId='user_'+Date.now();
-        var userData={};
-        userData[userId]={displayName:firstUserName,username:username,color:color,createdAt:Date.now()};
-        if(!db){console.error('Database not ready');alert('Database connection failed. Please refresh.');return;}
-        window.fn_set(window.fn_ref(db,'familyName'),familyName);
-        window.fn_set(window.fn_ref(db,'adminPin'),adminPin);
-        window.fn_set(window.fn_ref(db,'users'),userData);
-        currentConfig={firebaseConfig:FIREBASE_CFG,adminPin:adminPin,users:userData};
-        saveConfig(currentConfig);
-        USERS=[username];
-        USER_COLORS={};
-        DISPLAY_NAMES={};
-        USER_COLORS[username]=color;
-        DISPLAY_NAMES[username]=firstUserName;
-        currentUser=username;
-        el('app-title').textContent='📔 '+familyName;
-        setTimeout(startApp,500);
-      }catch(e){
-        console.error('Setup error:',e);
-        alert('Error during setup: '+e.message);
-        el('loading-screen').innerHTML='<button onclick="location.reload()" style="padding:10px 20px;background:#667eea;color:white;border:none;border-radius:4px;cursor:pointer;">Refresh and Try Again</button>';
-      }
     }
     function loadFamilyConfigFromFirebase(){
       window.fn_onValue(window.fn_ref(db,'familyName'),function(snap){
