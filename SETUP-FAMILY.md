@@ -66,15 +66,37 @@ The database currently allows anyone to read/write without authentication. We ne
 5. Click the **Web icon** (`</>`) — if one exists, select it; if not, create one
 6. You'll see a code block like:
    ```javascript
+   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
    const firebaseConfig = {
      apiKey: "AIzaSy...",
      authDomain: "project.firebaseapp.com",
      databaseURL: "https://project-default-rtdb.firebaseio.com",
      projectId: "my-project",
-     // ... other fields
+     storageBucket: "project.firebasestorage.app",
+     messagingSenderId: "123456789",
+     appId: "1:123456789:web:abc123...",
+     measurementId: "G-ABC123..."
    };
    ```
-7. **Copy just the config object** (from `{` to `}`, including the curly braces)
+
+7. **Copy ONLY the JSON object itself:**
+   - Start from the first `{` (opening curly brace)
+   - End at the last `}` (closing curly brace)
+   - **Do NOT include:** the comment line at the top, the `const firebaseConfig =` part, or the semicolon at the end
+   
+   **Correct format to copy:**
+   ```json
+   {
+     "apiKey": "AIzaSy...",
+     "authDomain": "project.firebaseapp.com",
+     "databaseURL": "https://project-default-rtdb.firebaseio.com",
+     "projectId": "my-project",
+     "storageBucket": "project.firebasestorage.app",
+     "messagingSenderId": "123456789",
+     "appId": "1:123456789:web:abc123...",
+     "measurementId": "G-ABC123..."
+   }
+   ```
 
 ## Running the Setup Tool
 
