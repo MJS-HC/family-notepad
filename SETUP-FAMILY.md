@@ -78,6 +78,12 @@ The database currently allows anyone to read/write without authentication. We ne
 
 ## Running the Setup Tool
 
+First, open a terminal (Command Prompt, PowerShell, or bash) and navigate to the Family Diary directory:
+
+```bash
+cd "C:\ClaudeCode\Shareable Multi-user Diary App"
+```
+
 ### Option 1: Interactive Mode (Easiest)
 
 ```bash
