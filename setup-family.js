@@ -134,8 +134,13 @@ async function main() {
 
   let htmlContent = fs.readFileSync(templatePath, 'utf8');
 
-  // Inject Firebase config as a global variable (before the APPSTART comment)
-  const configInjection = `\nwindow.PRE_CONFIGURED_FIREBASE = ${JSON.stringify(firebaseConfig)};\n`;
+  // Inject Firebase config to localStorage before the app runs
+  const config_v2 = {
+    firebaseConfig: firebaseConfig,
+    adminPin: '',
+    users: {}
+  };
+  const configInjection = `\n(function(){try{localStorage.setItem('fn_config_v2',${JSON.stringify(JSON.stringify(config_v2))});}catch(e){}})()\n`;
   const appStartIndex = htmlContent.indexOf('<!--APPSTART-->');
 
   if (appStartIndex === -1) {
