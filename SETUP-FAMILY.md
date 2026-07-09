@@ -4,15 +4,46 @@ This guide explains how to create a custom Family Diary deployment for a friend 
 
 ## Prerequisites
 
-**You need to have done this in Firebase Console for the family:**
-1. ✅ Created a Firebase project (e.g., "Matthews Family Diary")
-2. ✅ Created a Realtime Database (Region: your choice, e.g., `europe-west1`)
-3. ✅ Enabled Anonymous Authentication:
-   - Go to **Security** → **Authentication**
-   - Click **"Sign-in method"** tab
-   - Find **"Anonymous"** and toggle **Enable** (turn it blue)
-   - Click **"Save"**
-4. ✅ Updated Realtime Database Rules to:
+You need to complete these steps in Firebase Console for the family.
+
+### Step 1: Create Firebase Project and Database
+
+1. Go to [Firebase Console](https://console.firebase.google.com)
+2. Click **"Create a project"** or **"Add project"**
+3. Enter project name (e.g., "Matthews Family Diary")
+4. Click **"Continue"** → uncheck "Enable Google Analytics" → **"Create project"**
+5. Wait for it to initialize (1-2 minutes)
+6. In the left sidebar, find **"Databases and storage"** section
+7. Click **"Realtime Database"**
+8. Click **"Create Database"**
+9. Choose a region close to you (e.g., `europe-west1` for Europe)
+10. Select **"Start in test mode"**
+11. Click **"Enable"**
+12. Wait for the database to initialize
+
+### Step 2: Enable Anonymous Authentication
+
+1. In Firebase Console left sidebar, go to **Security** → **Authentication**
+   - (Note: Your Firebase UI groups it under "Security", not "Build")
+2. If you see a **"Get started"** button, click it
+3. Look for a list of sign-in providers (Email/Password, Google, Phone, Anonymous, etc.)
+4. Find **"Anonymous"** in the list
+5. Click on it
+6. Toggle the switch to turn it **ON** (it should turn blue)
+7. Click **"Save"**
+
+✅ **Anonymous sign-in is now enabled for this project.**
+
+### Step 3: Update Realtime Database Rules
+
+The database currently allows anyone to read/write without authentication. We need to change that so only authenticated users can access it:
+
+1. In Firebase Console, go to **Realtime Database** (left sidebar)
+2. Click the **"Rules"** tab (next to the "Data" tab)
+3. You'll see the current rules (something like `".read": true, ".write": false`)
+4. **Select all the text** (Ctrl+A or Cmd+A)
+5. **Delete it all**
+6. **Copy and paste this exactly:**
    ```json
    {
      "rules": {
@@ -21,9 +52,10 @@ This guide explains how to create a custom Family Diary deployment for a friend 
      }
    }
    ```
-   - Go to **Realtime Database** → **"Rules"** tab
-   - Replace the content with above
-   - Click **"Publish"**
+7. Click the blue **"Publish"** button at the bottom right
+8. Wait for it to confirm (you'll see "✓ Rules published")
+
+✅ **Database rules are now updated to require authentication.**
 
 ## Getting the Firebase Config
 
