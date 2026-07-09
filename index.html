@@ -968,6 +968,11 @@ function fnBoot(){
   if(fnBooted)return;
   fnBooted=true;
   loadFontSizes(); applyFontSizes(fontSizes);
+  if(window.PRE_CONFIGURED_FIREBASE){
+    currentConfig={firebaseConfig:window.PRE_CONFIGURED_FIREBASE,adminPin:ss('fn_derek_locked')||'',users:JSON.parse(ss('fn_config_v2')||'{}').users||{}};
+    saveConfig(currentConfig);
+    delete window.PRE_CONFIGURED_FIREBASE;
+  }
   try{
     var initFn=window.fn_initializeApp, dbFn=window.fn_getDatabase, onValFn=window.fn_onValue, refFn=window.fn_ref;
     if(typeof initFn!=='function'){
