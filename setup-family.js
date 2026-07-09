@@ -8,9 +8,8 @@
  *
  * Usage:
  *   node setup-family.js --name "Family Name" --config "{...firebase config...}"
- *
- * Or interactive mode:
- *   node setup-family.js
+ *   node setup-family.js --name "Family Name" --config-file config.json
+ *   node setup-family.js (interactive mode)
  */
 
 const fs = require('fs');
@@ -35,6 +34,7 @@ async function main() {
   const args = process.argv.slice(2);
   let familyName = '';
   let firebaseConfig = null;
+  let configFilePath = null;
 
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--name' && args[i + 1]) {
@@ -49,6 +49,21 @@ async function main() {
         process.exit(1);
       }
       i++;
+    }
+    if (args[i] === '--config-file' && args[i + 1]) {
+      configFilePath = args[i + 1];
+      i++;
+    }
+  }
+
+  // Load config from file if specified
+  if (configFilePath && !firebaseConfig) {
+    try {
+      const configContent = fs.readFileSync(configFilePath, 'utf8');
+      firebaseConfig = JSON.parse(configContent);
+    } catch (e) {
+      console.error(`❌ Failed to read or parse config file "${configFilePath}": ${e.message}`);
+      process.exit(1);
     }
   }
 
