@@ -877,6 +877,9 @@ function adminShowAddUser(){
   var color=available.length>0?available[Math.floor(Math.random()*available.length)]:COLOR_PALETTE[Math.floor(Math.random()*COLOR_PALETTE.length)];
   currentConfig.users[userId]={displayName:name,username:username,color:color,createdAt:Date.now()};
   saveConfig(currentConfig);
+  if(db&&window.fn_set&&window.fn_ref){
+    window.fn_set(window.fn_ref(db,'users'),currentConfig.users);
+  }
   USERS=Object.keys(currentConfig.users).map(function(k){return currentConfig.users[k].username;});
   USER_COLORS[username]=color;
   DISPLAY_NAMES[username]=name;
@@ -894,6 +897,9 @@ function adminEditUser(userId){
   u.displayName=newName;
   u.username=newName.toLowerCase().replace(/[^a-z0-9]/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');
   saveConfig(currentConfig);
+  if(db&&window.fn_set&&window.fn_ref){
+    window.fn_set(window.fn_ref(db,'users'),currentConfig.users);
+  }
   USERS=Object.keys(currentConfig.users).map(function(k){return currentConfig.users[k].username;});
   if(oldUsername!==u.username){
     delete USER_COLORS[oldUsername];
@@ -910,6 +916,9 @@ function adminDeleteUser(userId){
   var u=currentConfig.users[userId];
   delete currentConfig.users[userId];
   saveConfig(currentConfig);
+  if(db&&window.fn_set&&window.fn_ref){
+    window.fn_set(window.fn_ref(db,'users'),currentConfig.users);
+  }
   USERS=Object.keys(currentConfig.users).map(function(k){return currentConfig.users[k].username;});
   delete USER_COLORS[u.username];
   delete DISPLAY_NAMES[u.username];
@@ -921,7 +930,11 @@ function adminChangePin(){
   if(newPin===null)return;
   if(newPin.length<6){alert('PIN must be at least 6 characters.');return;}
   currentConfig.adminPin=newPin;
+  fbAdminPin=newPin;
   saveConfig(currentConfig);
+  if(db&&window.fn_set&&window.fn_ref){
+    window.fn_set(window.fn_ref(db,'adminPin'),newPin);
+  }
   alert('Admin PIN updated.');
 }
 function adminClearUsers(){
@@ -965,6 +978,8 @@ function renderUserPills(){
 
 var fnBooted=false;
 var db=null;
+var fbFamilyName='';
+var fbAdminPin='';
 function saveFamilySetup(){
   try{
     var familyName=document.getElementById('setup-family-name').value.trim();
@@ -980,6 +995,8 @@ function saveFamilySetup(){
     var userData={};
     userData[userId]={displayName:firstUserName,username:username,color:color,createdAt:Date.now()};
     if(!db){console.error('Database not ready');alert('Database connection failed. Please refresh.');return;}
+    fbFamilyName=familyName;
+    fbAdminPin=adminPin;
     window.fn_set(window.fn_ref(db,'familyName'),familyName);
     window.fn_set(window.fn_ref(db,'adminPin'),adminPin);
     window.fn_set(window.fn_ref(db,'users'),userData);
@@ -992,7 +1009,7 @@ function saveFamilySetup(){
     DISPLAY_NAMES[username]=firstUserName;
     currentUser=username;
     el('app-title').textContent='📔 '+familyName;
-    setTimeout(function(){location.reload();},500);
+    setTimeout(function(){location.reload();},1000);
   }catch(e){
     console.error('Setup error:',e);
     alert('Error during setup: '+e.message);
@@ -1061,10 +1078,16 @@ function fnBoot(){
     function loadFamilyConfigFromFirebase(){
       window.fn_onValue(window.fn_ref(db,'familyName'),function(snap){
         var fn=snap.val();
-        if(fn) el('app-title').textContent='📔 '+fn;
+        if(fn){
+          fbFamilyName=fn;
+          el('app-title').textContent='📔 '+fn;
+        }
       });
       window.fn_onValue(window.fn_ref(db,'adminPin'),function(snap){
-        adminPin=snap.val()||'';
+        var pin=snap.val()||'';
+        fbAdminPin=pin;
+        adminPin=pin;
+        currentConfig.adminPin=pin;
       });
       window.fn_onValue(window.fn_ref(db,'users'),function(snap){
         var fbUsers=snap.val()||{};
@@ -1077,6 +1100,7 @@ function fnBoot(){
           DISPLAY_NAMES[u.username]=u.displayName;
         });
         if(USERS.length>0)currentUser=USERS[0];
+        currentConfig.users=fbUsers;
         startApp();
       });
     }
