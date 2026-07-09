@@ -101,6 +101,14 @@ async function main() {
     }
   }
 
+  // Load config from file if not already loaded
+  if (!firebaseConfig && !configFilePath) {
+    const useFile = await prompt('Do you have a Firebase config file? (liz-config.json) [y/n]: ');
+    if (useFile.toLowerCase() === 'y') {
+      configFilePath = await prompt('Config file name (e.g., "liz-config.json"): ');
+    }
+  }
+
   if (!firebaseConfig) {
     console.log('\nEnter your Firebase config. You can find this in Firebase Console:');
     console.log('  1. Go to Project Settings (⚙️ icon, top left)');
